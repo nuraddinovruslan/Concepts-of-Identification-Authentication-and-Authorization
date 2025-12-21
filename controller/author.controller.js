@@ -45,8 +45,8 @@ const getOneAuthor = async (req, res) => {
 
 const addAuthor = async (req, res) => {
     try {
-        const {full_name, birth_year, death_year, bio, region, creativity, image_url, genre, period} = req.body
-        await AuthorSchema.create({full_name, birth_year, death_year, bio, region, creativity, image_url, genre, period})
+        const {full_name, birth_year, death_year, bio, region, creativity, image_url, genre, period, author_id} = req.body
+        await AuthorSchema.create({full_name, birth_year, death_year, bio, region, creativity, image_url, genre, period, author_id})
         res.status(201).json({
             message: "Added Author"
         })
@@ -59,7 +59,7 @@ const updateAuthor = async (req, res) => {
     try {
         const {id} = req.params
         const author = await AuthorSchema.findById(id)
-        const {full_name, birth_year, death_year, bio, region, creativity, image_url, genre, period} = req.body
+        const {full_name, birth_year, death_year, bio, region, creativity, image_url, genre, period, author_id} = req.body
         if(!author) {
             return res.status(404).json({
                 message: "Author not found"
@@ -67,7 +67,7 @@ const updateAuthor = async (req, res) => {
         }
 
         await AuthorSchema.findByIdAndUpdate(id, 
-            {full_name, birth_year, death_year, bio, region, creativity, image_url, genre, period})
+            {full_name, birth_year, death_year, bio, region, creativity, image_url, genre, period, author_id})
 
         res.status(200).json({
             message: "Author Updated"
