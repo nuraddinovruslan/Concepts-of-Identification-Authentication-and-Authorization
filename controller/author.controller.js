@@ -1,8 +1,9 @@
 const AuthorSchema = require("../schema/author.schema");
+const BookSchema = require("../schema/book.schema");
 
 const getAllAuthors = async (req, res) => {
     try {
-        const authors = await AuthorSchema.find()
+        const authors = await AuthorSchema.find().populate("authir_id", "-_id")
 
         res.status(200).json(authors)
     }catch(error) {
@@ -34,7 +35,9 @@ const getOneAuthor = async (req, res) => {
             })
         }
 
-        res.status(200).json(author)
+        const foundedBooks = await BookSchema.find({author_id: id})
+
+        res.status(200).json({author, foundedBooks})
     }catch(error) {
         console.log(error.message);
     }
