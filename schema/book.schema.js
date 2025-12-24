@@ -44,8 +44,8 @@ const Book = new Schema(
       required: true,
       enum: {
         values: [
-          "Fantasy",
-          "History",
+        "Historical", "Drama", "Horror", "Romans", "Detective", "Documentary", "Science fiction", "Fantasy", "Comedy", "Reality",
+                "Animation", "Thriller", "Advanture", "Novel", "Poetry", "Satir", "Melo drama", "Action"
         ],
         message: "Notogri genre"
       }

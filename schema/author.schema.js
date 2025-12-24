@@ -7,7 +7,7 @@ const Author = new Schema({
         unique: false,
         set: value => value.trim(),
         minLength: [3, "Kamida 3 ta harfdan iborat bolsin"],
-        match: [/^[a-zA-Z]+$/, "faqat harf kiriting"],
+        match: [/^[a-zA-Z]+$/, 'Faqat harflar kiriting'],
         trim: true,
     },
     birth_year: {
@@ -60,11 +60,11 @@ const Author = new Schema({
         required: true,
         maxLength: 60
     },
-    author_id: {
-        type: String,
-        required: true,
-        ref: "Author"
-    }
+    // author_id: {
+    //     type: String,
+    //     required: true,
+    //     ref: "Author"
+    // }
 },
     {
         versionKey: false,
