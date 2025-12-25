@@ -8,8 +8,8 @@ const user = new Schema(
       type: String,
       required: true,
       set: (value) => value.trim(),
-      unique: [true, "Bunaday username avval kiritilgan"],
-      match: [/^[a-zA-Z0-9_]+$/, "faqat harf kiriting"],
+      unique: [true, "Bunaqa username bor"],
+      match: [/^[a-zA-Z0-9_]+$/, "faqat harflardan iborat bolsin"],
     },
     email: {
       type: String,
@@ -18,7 +18,7 @@ const user = new Schema(
       lowercase: true,
       match: [
         /^\S+@\S+\.\S+$/,
-        "Email notogri formatda (masalan: test@gmail.com)",
+        "Email notogri formatda (masalan: name@gmail.com)",
       ],
     },
 
