@@ -1,4 +1,4 @@
-const { required } = require("joi");
+const { required, string, any } = require("joi");
 const { Schema, model } = require("mongoose");
 const { validate } = require("./book.schema");
 
@@ -27,6 +27,28 @@ const user = new Schema(
       required: true,
       minlength: [8, "Parol kamida 8 ta harfdan iborat bolsin"],
     },
+
+    role: {
+      type: String,
+      set: value => value.toLowerCase(),
+      enum: {
+        values: ["superadmin", "admin", "user"],
+        message: `{VALUE} bunday qiyamt qabul qilinmaydi`
+      },
+      default: "user"
+    },
+    otp: {
+      type: String,
+      default: null
+    },
+   isVerified: {
+    type: Boolean,
+    default: false
+   },
+   otpTime: {
+    type: String,
+    default: null
+   }
   },
   {
     versionKey: false,

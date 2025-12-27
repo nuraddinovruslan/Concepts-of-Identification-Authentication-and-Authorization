@@ -66,7 +66,14 @@ const Book = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Author",
       required: [true, "Author majburiy"]
-    }
+    },
+    quotes: [
+  {
+    type: String,
+    minlength: [5, "Iqtibos juda qisqa"],
+    maxlength: [500, "Iqtibos juda uzun"]
+  }
+],
 },
 {
     versionKey: false,
