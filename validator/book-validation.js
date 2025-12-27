@@ -13,7 +13,9 @@ exports.BookValidator = function(data) {
                  "Reality Animation", "Thriller", "Advanture", "Novel", "Poetry", "Satir", "Melo drama", "Action").required(),
             period: Joi.string().lowercase().valid("Temuriylar davri", "Jadid adabiyoti", "Sovet davri", "Mustaqillik davri").required(),
             published_home: Joi.string().min(3).max(100).required(),
-            author_id: Joi.string().max(24).required()
+            author_id: Joi.string().max(24).required(),
+            quotes: Joi.string().min(5, "iqtibos juda qisqa").max(500)
+
         })
 
         return schema.validate(data)

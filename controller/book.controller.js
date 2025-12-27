@@ -28,8 +28,8 @@ const getOneBook = async (req, res, next) => {
 
 const addBook = async (req, res, next) => {
     try {
-        const { title, pages, published_home, description, published_year, image_url, genre, period, author_id } = req.body
-        await BookSchema.create({ title, pages, published_home, description, published_year, image_url, genre, period, author_id })
+        const { title, pages, published_home, description, published_year, image_url, genre, period, author_id, quotes } = req.body
+        await BookSchema.create({ title, pages, published_home, description, published_year, image_url, genre, period, author_id, quotes })
         res.status(201).json({
             message: "Added Book"
         })
@@ -42,13 +42,13 @@ const updateBook = async (req, res, next) => {
     try {
         const { id } = req.params
         const book = await BookSchema.findById(id)
-        const { title, pages, published_home, description, published_year, image_url, genre, period, author_id } = req.body
+        const { title, pages, published_home, description, published_year, image_url, genre, period, author_id, quotes } = req.body
         if (!book) {
             throw customErrorHandler.NotFound("Book not found")
         }
 
         await BookSchema.findByIdAndUpdate(id,
-            { title, pages, published_home, description, published_year, image_url, genre, period, author_id })
+            { title, pages, published_home, description, published_year, image_url, genre, period, author_id, quotes })
 
         res.status(200).json({
             message: "Book Updated"
